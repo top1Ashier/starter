@@ -29,17 +29,6 @@ return {
   },
 
   {
-    "ahmedkhalf/project.nvim",
-    lazy = false,
-    keys = {
-      { "<leader>pp", "<cmd>Telescope projects<cr>", desc = "Projects overview" },
-    },
-    config = function()
-      require("project_nvim").setup()
-    end
-  },
-
-  {
     "echasnovski/mini.cursorword",
     version = false,
     lazy = false,
@@ -62,8 +51,6 @@ return {
           -- },
         }
       })
-      require("telescope").load_extension('projects')
-      -- require("telescope").extensions.projects.configurations()
     end,
   },
 
