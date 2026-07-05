@@ -13,12 +13,6 @@ return {
     end,
   },
 
-  { import = "nvchad.blink.lazyspec" },
-  {
-    "Saghen/blink.cmp",
-    opts = require "configs.blink",
-  },
-
   {
     "johnfrankmorgan/whitespace.nvim",
   },
@@ -27,6 +21,11 @@ return {
     "OXY2DEV/markview.nvim",
     lazy = false,
 
+    -- For blink.cmp's completion
+    -- source
+    -- dependencies = {
+    --     "saghen/blink.cmp"
+    -- },
   },
 
   {
@@ -74,7 +73,13 @@ return {
     keys = {
       { "<leader>lS", "<cmd>AerialToggle<cr>", desc = "Toggle symbols outline" },
     },
-    opts = require("configs.aerial"),
+    config = function()
+      require("aerial").setup({
+        backends = { "lsp", "treesitter", "markdown", "asciidoc", "man" },
+        disable_max_lines = 100000,
+        disable_max_size = 20000000,
+      })
+    end,
   },
 
   -- Git tool

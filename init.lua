@@ -32,6 +32,8 @@ dofile(vim.g.base46_cache .. "statusline")
 require "options"
 require "autocmds"
 
+-- vim.env.PATH = vim.env.PATH .. '/home/SIFLOWER/renxuan.li/.local/bin/'
+
 vim.schedule(function()
   require "mappings"
 end)

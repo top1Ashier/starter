@@ -1,14 +1,28 @@
 require("nvchad.configs.lspconfig").defaults()
 
-local servers = { "clangd", "lua_ls" }
-vim.lsp.enable(servers)
+local lspconfig = require "lspconfig"
 
--- read :h vim.lsp.config for changing options of lsp servers 
-vim.lsp.config.clangd = {
-  cmd = {
-    "clangd",
-    "--background-index",
-    "--clang-tidy",
-    "--header_insertion=nerver",
+-- EXAMPLE
+local servers = { "clangd", "pyright"  }
+local nvlsp = require "nvchad.configs.lspconfig"
+
+-- lsps with default config
+for _, lsp in ipairs(servers) do
+  lspconfig[lsp].setup {
+    on_attach = nvlsp.on_attach,
+    on_init = nvlsp.on_init,
+    capabilities = nvlsp.capabilities,
   }
-}
+end
+
+-- lspconfig.clangd.setup {
+--     cmd = {
+--         "clangd",
+--         "--background-index",
+--         "--clang-tidy",
+--         "--header-insertion=never",
+--     },
+--     on_attach = nvlsp.on_attach,
+--     on_init = nvlsp.on_init,
+--     capabilities = nvlsp.capabilities,
+-- }

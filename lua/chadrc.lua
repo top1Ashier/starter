@@ -6,7 +6,7 @@
 local M = {}
 
 M.base46 = {
-    theme = "gruvchad",
+    theme = "carbonfox",
 
     -- hl_override = {
     -- 	Comment = { italic = true },
@@ -16,20 +16,24 @@ M.base46 = {
 
 M.ui = {
     statusline = {
-        theme = "vscode_colored",
+        theme = "default",
         separator_style = "default",
-        order = { "mode", "file", "git", "symbol", "%=", "lsp_msg", "%=", "lsp", "cwd", "cursor" },
+        order = { "mode", "file", "git", "symbol", "%=", "lsp_msg", "%=", "lsp", "ext", "cwd", "cursor" },
         modules = {
+            ext = "| Ln %l, Col %c  ",
             symbol = function ()
                 local tb = require('aerial').get_location()
                 if tb[1] and tb[1].name and tb[1].icon then
                     if tb[1].name == "symbol" then return "" end
-                    return "  " .. tb[1].icon .. tb[1].name
+                    return "  | " .. tb[1].icon .. tb[1].name
                 end
                 return ""
             end
-        }
+        },
     },
+    -- tabufline = {
+    --     lazyload = false
+    -- },
 
   telescope = { style = "bordered" },
 }
@@ -37,24 +41,24 @@ M.ui = {
 M.nvdash = {
       load_on_startup = true,
 
-      header = {
-        '           ▌▀  ▀█   ____         ▄▄▄▄           ',
-        '           ▀▄   ▀▀▀"""""""▀▀▀▀W▄▄█"  ▐█         ',
-        '         _▄w⌐                  ""   ▓▀          ',
-        '      _▄▀"                          ▀▓▄         ',
-        '     █▀       _▄▄▄         ,▄_        ▐█▄       ',
-        '   ▐█                        "▀         ▐█¡     ',
-        '  ▌▀          _¿¿_                        █¡    ',
-        ' ▐█          ▐██,█▄       _█▀▀▓           ▐█    ',
-        ' █Γ      |▄_,╛▀██▀        ▌█▓▓█ⁿ           █ì   ',
-        ' █ì     ╠▀╨▀▐▀       ▐▄     ""╩▓M▓_▄       █Γ   ',
-        " ▌█       ''''      ▀▀▀▀      '`' ▀╩       █ì   ",
-        '  █¡                 ▀\'                  ▌▀    ',
-        '   █▄                                    ▄█     ',
-        '    ▀█¡                                 ▓▀      ',
-        '      ▐█                             _▓▀        ',
-        ' Powered By  RX'
-      },
+      -- header = {
+        -- '           ▌▀  ▀█   ____         ▄▄▄▄           ',
+        -- '           ▀▄   ▀▀▀"""""""▀▀▀▀W▄▄█"  ▐█         ',
+        -- '         _▄w⌐                  ""   ▓▀          ',
+        -- '      _▄▀"                          ▀▓▄         ',
+        -- '     █▀       _▄▄▄         ,▄_        ▐█▄       ',
+        -- '   ▐█                        "▀         ▐█¡     ',
+        -- '  ▌▀          _¿¿_                        █¡    ',
+        -- ' ▐█          ▐██,█▄       _█▀▀▓           ▐█    ',
+        -- ' █Γ      |▄_,╛▀██▀        ▌█▓▓█ⁿ           █ì   ',
+        -- ' █ì     ╠▀╨▀▐▀       ▐▄     ""╩▓M▓_▄       █Γ   ',
+        -- " ▌█       ''''      ▀▀▀▀      '`' ▀╩       █ì   ",
+        -- '  █¡                 ▀\'                  ▌▀    ',
+        -- '   █▄                                    ▄█     ',
+        -- '    ▀█¡                                 ▓▀      ',
+        -- '      ▐█                             _▓▀        ',
+        -- ' Powered By  RX'
+      -- },
 
   buttons = {
     { txt = "  Find File", keys = "ff", cmd = "Telescope find_files" },
