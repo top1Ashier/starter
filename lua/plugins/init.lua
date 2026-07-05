@@ -124,6 +124,94 @@ return {
   },
 
   {
+    "numToStr/Comment.nvim",
+    keys = {
+      { "gc", mode = { "n", "v" } },
+      { "gb", mode = { "n", "v" } },
+    },
+    opts = {},
+  },
+
+  {
+    "MagicDuck/grug-far.nvim",
+    cmd = "GrugFar",
+    keys = {
+      {
+        "<leader>sr",
+        function()
+          require("grug-far").open()
+        end,
+        desc = "Search and Replace",
+      },
+    },
+    opts = {},
+  },
+
+  {
+    "folke/persistence.nvim",
+    event = "BufReadPre",
+    opts = {},
+    keys = {
+      {
+        "<leader>qs",
+        function()
+          require("persistence").load()
+        end,
+        desc = "Restore Session",
+      },
+      {
+        "<leader>qS",
+        function()
+          require("persistence").select()
+        end,
+        desc = "Select Session",
+      },
+      {
+        "<leader>ql",
+        function()
+          require("persistence").load({ last = true })
+        end,
+        desc = "Restore Last Session",
+      },
+      {
+        "<leader>qd",
+        function()
+          require("persistence").stop()
+        end,
+        desc = "Stop Session",
+      },
+    },
+  },
+
+  {
+    "stevearc/overseer.nvim",
+    cmd = {
+      "OverseerClose",
+      "OverseerOpen",
+      "OverseerRun",
+      "OverseerShell",
+      "OverseerTaskAction",
+      "OverseerToggle",
+    },
+    keys = {
+      { "<leader>oo", "<cmd>OverseerToggle<cr>", desc = "Toggle Tasks" },
+      { "<leader>or", "<cmd>OverseerRun<cr>", desc = "Run Task" },
+      { "<leader>oq", "<cmd>OverseerTaskAction<cr>", desc = "Task Action" },
+    },
+    opts = {},
+  },
+
+  {
+    "folke/lazydev.nvim",
+    ft = "lua",
+    opts = {
+      library = {
+        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+      },
+    },
+  },
+
+  {
     "echasnovski/mini.cursorword",
     version = false,
     lazy = false,
